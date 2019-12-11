@@ -17,21 +17,24 @@
         </nav>
         <!-- Mobile NAV content -->
         <ul class="sidenav" id="mobile-nav">
-            <li class="active"><a href="index.html">Hjem</a></li>
-            <li><a href="routePlanning.html">Ruteplanlegging</a></li>
+            <li><a href="index.html">Hjem</a></li>
+            <li class="active"><a href="routePlanning.html">Ruteplanlegging</a></li>
             <li><a href="#">Link 3</a></li>
             <li><a href="#">Link 4</a></li>
         </ul>
 
 
 
-        <h1 class="teal-text center">uniVyrsal</h1>
+        <h1 class="teal-text center">Ruteplanlegging</h1>
 
         <!-- Search bar -->
         <div class="container">
             <div class="input-field">
+                <p class="teal-text">Reise til</p>
                 <input class="center" id="destination" type="text" placeholder="Hvor vil du reise?" required>
-                <button id="submitBtn" class="btn-floating waves-light right z-depth-0 disabled"><i class="material-icons">keyboard_arrow_right</i></button>
+                <p class="teal-text">Reise fra</p>
+                <input class="center" id="startPoint" type="text" placeholder="Hvor reiser du fra?" required>
+                <button class="btn waves-light z-depth-0">Finn reise</button>
             </div>
         </div>
 
@@ -43,7 +46,6 @@
         <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
         <!-- Compiled and minified JavaScript -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-        <script src="js/home.js"></script>
         <script src="js/index.js"></script>
     </body>
 </html>
