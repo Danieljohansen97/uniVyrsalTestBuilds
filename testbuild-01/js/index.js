@@ -13,9 +13,9 @@ const setupUI = (user) => {
         // User details on profilepage
         if (userDetails) {
             const html = `
-            <ul class="collapsible">
+            <ul class="collapsible" style="width: 80%; margin: auto;">
                 <li>
-                    <div class="collapsible-header"><i class="material-icons">info</i>Contact info</div>
+                    <div class="collapsible-header teal white-text"><i class="material-icons">phone</i>Contact info</div>
                     <div class="collapsible-body"><span>
                         Email: ${user.email}
                         <br>
