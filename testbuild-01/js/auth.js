@@ -1,11 +1,11 @@
 // Listen for authentication changes
 auth.onAuthStateChanged(user => {
     if (user) {
-        console.log("Logged in as: ", user);
+        setupUI(user);
     } else {
-        console.log("User logged out");
+        setupUI();
     }
-})
+});
 
 
 
@@ -33,11 +33,14 @@ registerForm.addEventListener("submit", (e) => {
 
 //Sign in
 loginForm.addEventListener("submit", (e) => {
+    e.preventDefault();
     const email = document.querySelector("#loginEmail").value;
     const password = document.querySelector("#loginPassword").value;
 
     auth.signInWithEmailAndPassword(email, password).then(cred => {
-        console.log("You have been signed in.");
+        const modal = document.querySelector("#loginModal");
+        M.Modal.getInstance(modal).close();
+        loginForm.reset();
     });
 });
 
