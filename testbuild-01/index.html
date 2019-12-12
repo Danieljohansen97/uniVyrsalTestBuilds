@@ -75,16 +75,20 @@
                         <label for="registerPassword">Choose a password:</label>
                     </div>
                     <div class="input-field">
-                        <input type="date" id="registerBirth" required />
-                        <label for="registerBirth">Birthdate:</label>
-                    </div>
-                    <div class="input-field">
                         <input type="text" id="registerFirstName" required />
                         <label for="registerFirstName">First name:</label>
                     </div>
                     <div class="input-field">
                         <input type="text" id="registerLastName" required />
                         <label for="registerLastName">Last name:</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="date" id="registerBirth" required />
+                        <label for="registerBirth">Birthdate:</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="number" id="registerNumber" required />
+                        <label for="registerNumber">Mobile number:</label>
                     </div>
                     <button class="btn teal darken-2 z-depth-0">Sign up</button>
                 </form>
@@ -111,7 +115,8 @@
         <!-- The core Firebase JS SDK is always required and must be listed first -->
         <script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-auth.js"></script>
-
+        <script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-firestore.js"></script>
+        
         <!-- TODO: Add SDKs for Firebase products that you want to use
             https://firebase.google.com/docs/web/setup#available-libraries -->
 
@@ -130,6 +135,7 @@
             firebase.initializeApp(firebaseConfig);
             
             const auth = firebase.auth();
+            const db = firebase.firestore();
         </script>
         <!-- jQuery -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>

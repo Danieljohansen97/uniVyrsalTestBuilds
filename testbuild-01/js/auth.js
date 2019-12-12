@@ -22,12 +22,24 @@ registerForm.addEventListener("submit", (e) => {
     const password = document.querySelector("#registerPassword").value;
     const fName = document.querySelector("#registerFirstName").value;
     const lName = document.querySelector("#registerLastName").value;
-
+    const birthDate = document.querySelector("#registerBirth").value;
+    const number = document.querySelector("#registerNumber").value;
+    
+    // Signup the user
     auth.createUserWithEmailAndPassword(email, password).then(cred => {
-        console.log("You have now been registered with email and password");
+        return db.collection("users").doc(cred.user.uid).set({
+            fName: fName,
+            lName: lName,
+            birthDate: birthDate,
+            number: number
+        });
+
+    }).then(() => {
         const modal = document.querySelector("#registerModal");
+        const loginModal = document.querySelector("#loginModal");
         M.Modal.getInstance(modal).close();
-        registerForm.reset();
+        M.Modal.getInstance(loginModal).close();
+        registerForm.reset();  
     });
 });
 
