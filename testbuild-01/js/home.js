@@ -20,7 +20,8 @@ input.addEventListener("mouseleave", () => {
 });
 
 // submitBtn eventlistener
+
 submitBtn.addEventListener("click", () => {
     console.log(input.value);
+    location.href = "routePlanning.html";
 });
-

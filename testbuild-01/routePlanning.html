@@ -12,7 +12,23 @@
         <nav>
             <div class="nav-wrapper teal lighten-1">
                 <!-- Mobile NAV trigger -->
-                <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul class="left">
+                    <li>
+                        <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                    </li>
+                </ul>
+                <!-- Authentication and user links -->
+                <ul class="right">
+                    <li>
+                        <a class="loggedOut modal-trigger" href="#loginModal" style="display: none;">Login</a>
+                    </li>
+                    <li>
+                        <a class="loggedIn" href="profilePage.html" style="display: none;"><i class="material-icons">person</i></a>
+                    </li>
+                    <li>
+                        <a class="loggedIn" href="#" id="logout" style="display: none;">Logout</a>
+                    </li>
+                </ul>
             </div>
         </nav>
         <!-- Mobile NAV content -->
@@ -20,32 +36,118 @@
             <li><a href="index.html">Hjem</a></li>
             <li class="active"><a href="routePlanning.html">Ruteplanlegging</a></li>
             <li class="loggedIn"><a href="profilePage.html">Profile</a></li>
-            <li><a href="videoTest.html">Videotest</a></li>
+            <!-- <li><a href="videoTest.html">Videotest</a></li> -->
         </ul>
 
+        <!-- loginModal -->
+        <div id="loginModal" class="modal">
+            <div class="modal-content">
+                <h4 class="center teal-text">Sign in</h4>
+                <form id="loginForm">
+                    <div class="input-field">
+                        <input type="email" id="loginEmail" required />
+                        <label for="loginEmail">Email:</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" id="loginPassword" required />
+                        <label for="loginPassword">Password:</label>
+                    </div>
+                    <button class="btn teal darken-2 z-depth-0">Login</button>
+                </form>
+                <p class="pink-text" id="loginError"></p>
+            </div>
+            <div class="modal-footer">
+                <p class="modal-trigger center blue-text" href="#registerModal">Don´t have a user? Sign up!</p>
+            </div>
+        </div>
 
-
-        <h1 class="teal-text center">Ruteplanlegging</h1>
-
-        <!-- Search bar -->
-        <div class="container">
-            <div class="input-field">
-                <p class="teal-text">Reise til</p>
-                <input class="center" id="destination" type="text" placeholder="Hvor vil du reise?" required>
-                <p class="teal-text">Reise fra</p>
-                <input class="center" id="startPoint" type="text" placeholder="Hvor reiser du fra?" required>
-                <button class="btn waves-light z-depth-0">Finn reise</button>
+        <!-- registerModal -->
+        <div id="registerModal" class="modal">
+            <div class="modal-content">
+                <h4 class="center teal-text">Sign up</h4>
+                <form id="registerForm">
+                    <div class="input-field">
+                        <input type="email" id="registerEmail" required />
+                        <label for="registerEmail">Your email address:</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" id="registerPassword" required />
+                        <label for="registerPassword">Choose a password:</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" id="registerFirstName" required />
+                        <label for="registerFirstName">First name:</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" id="registerLastName" required />
+                        <label for="registerLastName">Last name:</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="date" id="registerBirth" required />
+                        <label for="registerBirth">Birthdate:</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="number" id="registerNumber" required />
+                        <label for="registerNumber">Mobile number:</label>
+                    </div>
+                    <button class="btn teal darken-2 z-depth-0">Sign up</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <p class="modal-trigger center blue-text" href="#loginModal">Already registered? Sign in!</p>
             </div>
         </div>
 
 
+        <h1 class="teal-text center">Ruteplanlegging</h1>
+        <!-- Search bar -->
+        <div class="container">
+            <div class="input-field">
+                <form id="directionForm" target="googleMap">
+                    <p class="teal-text">Reise til</p>
+                    <input class="center" id="startDest" type="text" placeholder = "Hvor vil du reise?" required>
+                    <input name="output" type="hidden" value="embed">
+              
+                    <p class="teal-text">Reise fra</p>
+                    <input class="center" name="daddr" id="endDest" type="text" placeholder="Hvor reiser du fra?" required>
+                    <button class="btn waves-light z-depth-0" name="submit" type="submit">Finn reise</button>
+                </form>
+            </div>
+        </div>
+        <div id="googleMap" style="width:100%;height:400px;"></div>
 
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-firestore.js"></script>
+        
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#available-libraries -->
 
-
+        <script>
+            // Your web app's Firebase configuration
+            var firebaseConfig = {
+                apiKey: "AIzaSyCGJD5ypO0gxL8s8JQw0Ewm4qMIQarPeXM",
+                authDomain: "smidigprosjekt19-20.firebaseapp.com",
+                databaseURL: "https://smidigprosjekt19-20.firebaseio.com",
+                projectId: "smidigprosjekt19-20",
+                storageBucket: "smidigprosjekt19-20.appspot.com",
+                messagingSenderId: "739980787541",
+                appId: "1:739980787541:web:73a2b0e5c69787e3e1f9dc"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+            
+            const auth = firebase.auth();
+            const db = firebase.firestore();
+        </script>
         <!-- jQuery -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
         <!-- Compiled and minified JavaScript -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <script src="js/index.js"></script>
+        <script src="js/auth.js"></script>
+        <script src="js/googleMaps.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGJD5ypO0gxL8s8JQw0Ewm4qMIQarPeXM&callback=getLocation"></script> 
     </body>
 </html>

@@ -8,6 +8,7 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!-- Materialize CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link rel="stylesheet" href="css/stylesheet.css">
     </head>
     <body>
         <nav>
@@ -98,7 +99,14 @@
         <!-- Video content -->
         <h1 class="teal-text center">Video Test</h1>
         <div id="container">
-            <video autoplay="true" id="videoElement" width="80%" style="margin: auto;"></video>
+            <video autoplay="true" id="videoElement" type="video/mp4">
+            
+            </video>
+
+            <button id="button">Trykk her for å ta bilde</button>
+            <input id="input" type="file" accept="image/*" capture="camera" />
+
+            <canvas id="canvas"></canvas>
         </div>
         
 

@@ -1,0 +1,39 @@
+#container {
+    position: relative;
+    top: 0px;
+    left: 0px;
+	width: 650px;
+    height: 450px;
+}
+
+#videoElement {
+    position: absolute;
+    left: 650px;
+	width: 600px;
+	height: 450px;
+}
+
+#canvas{
+    position: absolute;
+    top: 485px;
+    left: 650px;
+}
+
+#button{
+    position: absolute;
+    top: 460px;
+    left: 875px;
+    background-color: rgb(216, 97, 121);
+    border: 0px;
+}
+
+#button:hover{
+    cursor: pointer;
+    box-shadow: 0 0 2px 1px #f0f;
+}
+
+#input{
+    position: absolute;
+    top: 458px;
+    left: 700px;
+}
